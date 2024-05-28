@@ -8,7 +8,11 @@ namespace jQuery_AJAX_WebAPI_MVC.Controllers
 {
     public class HomeController : Controller
     {
-
+        /// <summary>
+        /// DisplayDateTime-->return View()
+        /// 2024/05/28
+        /// </summary>
+        /// <returns></returns>
         public ActionResult DisplayDateTime()
         {
             return View();
