@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "CreateEMP";
+}
+
+<h2>新增 員工基本檔</h2>
+<br />
+
+
+<form method="post" action="/Home/AddEMP">
+
+    <div class="form-group row">
+        <label for="inputEMPName" class="col-sm-2">員工姓名</label>
+        <div class="col-sm-10">
+            <input type="text" id="inputEMPName" name="EMP_NAME" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputAGE" class="col-sm-2">年齡</label>
+        <div class="col-sm-10">
+            <input type="number" id="inputAGE" name="AGE" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputBirthday" class="col-sm-2">生日</label>
+        <div class="col-sm-10">
+            <input type="number" id="inputBirthday" name="Birthday" class="form-control" />
+        </div>
+    </div>
+    <input class="btn btn-default" type="submit" value="新增" />
+</form>
+
+<body>
+    <input type="text" id="txtName" />
+    <input type="button" id="btnGet" value="Get Current Time" />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnGet").click(function () {
+                var person = '{Name:"' + $("#inputEMPName").val() + '"}';
+                // alert('btnGet.click' + person);
+                $.ajax({
+                    type: "POST",
+                    url: "/api/AjaxAPI/AjaxMethod",
+                    data: person,
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                       // alert('success->' + response);
+                       
+                        var ouput = "Hello:" + response.Name + ".\nCurrent Date and Time: " + response.DateTime;
+                        alert('success->' + ouput);
+                        var myHeading = document.querySelector("h2");
+                        var myHeadingContent = myHeading.innerHTML;
+
+                        myHeading.innerHTML = myHeadingContent + ouput;
+                    },
+                    failure: function (response) {
+                       // alert('failure->' + response);
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                       // alert('error->' + response);
+                        alert(response.responseText);
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+</body>
+
+
+

@@ -1,0 +1,45 @@
+﻿@*///2024/05/23*@
+
+@using jQuery_AJAX_WebAPI_MVC.Models;
+
+@{
+    List<EMP> emps = ViewBag.emps;
+}
+
+@{
+    ViewBag.Title = "員工基本檔";
+
+}
+<h2>員工基本檔</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>員工編號</th>
+            <th>員工姓名</th>
+            <th>年齡</th>
+            <th>生日</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (EMP emp in emps)
+        {
+        <tr>
+            <th>@emp.Emp_ID</th>
+            <th>@emp.Emp_Name</th>
+            <th>@emp.Age</th>
+            <th>@emp.Birthday</th>
+            <th>@Html.ActionLink("修改", "EditEMP", new { emp_id = emp.Emp_ID })</th>
+            <th>@Html.ActionLink("刪除", "DeleteEMP", new { emp_id = emp.Emp_ID })</th>
+            <th>
+            <th>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+<p class="btn btn-default">
+    @Html.ActionLink("新增資料", "AddEMP")
+</p>

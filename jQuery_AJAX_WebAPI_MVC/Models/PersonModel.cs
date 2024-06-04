@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace jQuery_AJAX_WebAPI_MVC.Models
+﻿namespace jQuery_AJAX_WebAPI_MVC.Models
 {
     /// <summary>
     /// 2024/05/28
